@@ -1,0 +1,166 @@
+= Events in NewsML-G2
+Kelvin Holland
+2017-02-16
+:revdate: 2017-02-16 21:39:25 -0600
+:page-tags: [guidelines, events]
+
+# Events in NewsML-G2
+
+## A standard for exchanging news event information
+
+The sharing of event-related information and planning of news coverage is a core activity of news organisations, without which they cannot function effectively.
+
+News agencies need to keep their customers informed of upcoming events and planned coverage. News organisations publishing on paper and digital media need to plan and co-ordinate their operations in order to make optimum use of their available resources and ensure their target audiences will be properly served.
+
+Historically, this was a paper-based exercise, with news desks maintaining a Day Book, or Diary, and circulating information to colleagues and partners using written memoranda, sometimes referred to as the Schedule, or Budget. 
+
+Many organisations have moved, or are moving, to electronic scheduling applications. With software developers and vendors working independently on these applications, there is a risk that incompatibility will inhibit the exchange of information and reduce efficiency. 
+
+Consequently, there has been a drive among IPTC members to formalise a standard for exchanging this information in a machine-readable events format using XML, allowing it to be processed using standard tools and enabling compatibility with other XML-based applications and popular calendaring applications such as Microsoft Outlook.
+
+Originally a separate EventsML-G2 standard, the Events Calendar and Scheduling model is now merged with NewsML-G2 to create a single standard focussed on the needs of a professional news industry workflow5. There is the need to express the basic news agenda of “what, when, where and who” in a machine-readable form that can be processed by calendar and planning tools.
+
+The related NewsML-G2 Planning Item can be combined with Event information so that news organisations can plan their response to news events, such as job assignments, content planning and content fulfilment, sharing this if required with partners in a workflow. (See Editorial Planning – the Planning Item)
+
+NewsML-G2 Events may be used to send and receive all, or part of, the information about:
+- a specific news event.
+- a range of news events filtered according to some criteria – an event listing.
+- updates to news events.
+- people, organisations, objects and other concepts linked to news events.
+
+### Business Advantages 
+
+An event managed using NewsML-G2 can serve as the “glue” that binds together all of the content related to a news story. For example, a news organisation learns of the imminent merger of two companies. This story can be pre-planned using Events in NewsML-G2 and assigned a unique Event ID by the event planning workflow, in the form of a QCode. When content related to this event is created (text, pictures, graphics, audio, video and packages), all of the separately-managed content to be associated using the QCode as a reference.
+
+The result is that when users view content about this story, they can be provided with navigation to any other related content, or they can search for the related content.
+
+The NewsML-G2 Events standard is the result of detailed collaborative work by IPTC experts operating in diverse markets throughout North America, Europe and Asia Pacific, highly experienced in the planning of news operations and the issues involved.
+
+Adopters therefore have access to an “off the shelf” data model built on the specific needs of the news industry that can nevertheless be extended by individual organisations where necessary to add specialised features. The Events model is evolving as new requirements become known, and the IPTC endeavours to main compatibility with previous versions, giving users a straightforward upgrade path.
+
+The NewsML-G2 Events model complies with the Resource Description Framework (RDF) promulgated by the W3C, which is a basic building block of the Semantic Web, and aligns with the iCalendar footnote: [A mapping of iCalendar properties to NewsML-G2 properties can be found in the NewsML-G2 Specification Page on the NewsML-G2 web site. See also IETF iCalendar Specification RFC 5545 ] specification that is supported by popular calendar and scheduling applications such as Microsoft Outlook, Lotus Notes and Apple iCal.
+
+There is considerable scope for using events planning to improve the efficiency and quality of news production, since an estimated 50-80% of news provision is of events that are known about in advance. When a pre-planned event is accessible from an editorial system, metadata from the event may be inherited by the news content associated with that event; this makes the handling of the news faster and more consistent. There is also an improvement in quality, since the appropriateness and accuracy of metadata may be checked at the planning stage, rather than under the pressure of a deadline.
+
+The advantages of using a common standard to promote the efficient exchange of information are well understood. Using NewsML-G2 Events, providers can develop planning and scheduling products with greater confidence that the information can be consumed by their customers; recipients can cut development costs and time to market for the savings and services that flow from an efficient resource planning system that aligns with their operational model.
+
+### Events Structure
+
+Events in NewsML-G2 use the same building blocks as all other NewsML-G2 Items: 
+- Events use NewsML-G2 identification and versioning properties.
+- The <itemMeta> block holds management information about the Item.
+- The <contentMeta> block holds common administrative metadata about the event, or events, conveyed by the NewsML-G2 object.
+
+[NOTE]
+.Please note
+=======================
+Read the Quick Start Guide 
+to NewsML-G2 Basics 
+before reading this Chapter.
+=======================
+
+There are two methods for expressing events using NewsML-G2, each suited to a particular type of information, or application, as shown in Figure 14:
+- Persistent event information that will be referenced by other events and by other NewsML-G2 Items is instantiated as Concept Items containing an <eventDetails> wrapper, or as members of a set of Event Concepts in a Knowledge Item. Events expressed as a Concept with a Concept ID are persistent and can be unambiguously referenced by other Items over time.
+- Transient event information that is “standalone” and volatile can be conveyed in NewsML-G2 using an <events> structure inside a News Item. Events expressed as an <event> in a News Item have no Concept ID and cannot be referenced from other Items.
+- Managed (persistent) events would be appropriate when a provider makes each of the announced events uniquely identifiable. The event information can then be stored by the receivers and any updates to events can be managed. This model also enables content to be linked to events using the unique event identifier, and this enables linking and navigation of content related to news stories.
+- A “standalone” implementation would be used when an organisation periodically announces to its partners and customers lists of forthcoming events. These may be for information only and not managed by the provider. So, for example, a daily list may repeat items that appeared in a weekly list, but there is no link between them, and nothing to indicate when an event has been updated.
+
+
+These differences are illustrated in the following diagram:
+
+Figure 14: Persistent Event as a Concept and (right) transient Events in a News Item
+##Event Information – What, Where, When and Who
+In a news context, events are newsworthy happenings that may result in the creation of journalistic content. Since news involves people, organisations and places, NewsML-G2 has a flexible set of properties that can convey details of these concepts. There is also a fully-featured date-time structure to express event occurrences, which conforms to the iCalendar specification. 
+### Complete Listing for an example Event
+The following example shows a news event expressed as a Concept and conveyed within a Concept Item.
+LISTING 1 Event sent as a Concept Item
+All Scheme Aliases used in listing below indicate IPTC NewsCodes vocabularies, except for the following alias values: event, frel, ventyp.
+<?xml version=“1.0” encoding=“UTF-8” standalone=”yes”?>
+<conceptItem xmlns="http://iptc.org/std/nar/2006-10-01/" 
+	guid="urn:newsml:iptc.org:20160422:qqwpiruuew4711" 
+	version="8"
+	standard="NewsML-G2" 
+	standardversion="2.23" 
+	conformance="power"
+	xml:lang="en">
+	<catalogRef href="http://www.iptc.org/std/catalog/IPTC-G2-standards_27.xml" />
+	<catalogRef href="http://www.example.com/events/event-catalog.xml" />
+	<itemMeta>
+		<itemClass qcode="cinat:concept" />
+		<provider qcode="nprov:IPTC" />
+		<versionCreated>2016-10-18T13:05:00Z 
+		</versionCreated>
+		<pubStatus qcode="stat:usable" />
+	</itemMeta>
+	<contentMeta>
+	<urgency>5</urgency>
+	<contentCreated>2016-01-16T12:15:00Z</contentCreated>
+	<contentModified>2016-06-12T13:35:00Z</contentModified>
+	</contentMeta>
+	<concept>
+		<conceptId created="2016-01-16T12:15:00Z" qcode="event:1234567" />
+		<type qcode="cpnat:event" />
+		<name>IPTC Autumn Meeting 2016</name>
+		<eventDetails>
+			<dates>
+				<start>2016-10-26T09:00:00Z</start>
+				<duration>P2D</duration>
+			</dates>
+			<location>
+				<name>86, Edgeware Road, London W2 2EA, United Kingdom</name>
+				<related rel="frel:venuetype" qcode="ventyp:confcentre" />
+				<POIDetails>
+					<position latitude="51.515659" longitude="-0.163346" />
+					<contactInfo>
+						<web>https://www.etcvenues.co.uk</web>
+					</contactInfo>
+				</POIDetails>
+			</location>
+			<participant qcode="eprol:director">
+				<name>Michael Steidl</name>
+				<personDetails>
+					<contactInfo>
+						<email>mdirector@iptc.org</email>
+					</contactInfo>
+				</personDetails>
+			</participant>
+		</eventDetails>
+	</concept>
+</conceptItem>
+
+The top level element of the Concept Item is <conceptItem>. The document must be uniquely identified using a GUID. By this means, event information re-sent using the same GUID and an incremented version number, allows the receiver to manage, update or replace the conveyed concept (event) information.
+[NOTE]
+.Please note
+=============================================================
+@guid and @version uniquely identify the Concept Item, for the purpose of managing and updating the event information. Items that reference the event itself MUST use the Concept ID. This is because the Concept ID uniquely references a persistent Web resource, whereas the GUID only identifies a document that may or may not persist. 
+=============================================================
+To enable concepts to be identified by a Concept ID QCode, a reference to the provider’s catalog (or a catalog statement containing the scheme URI) MUST be included: 
+
+[source,xml]
+=============================================================
+<?xml version=“1.0” encoding=“UTF-8” standalone=”yes”?>
+<conceptItem xmlns="http://iptc.org/std/nar/2006-10-01/"
+	guid="urn:newsml:iptc.org:20160422:qqwpiruuew4711" 
+	version="8"
+	standard="NewsML-G2" 
+	standardversion="2.23" 
+	conformance="power"
+	xml:lang="en">
+	<catalogRef href="http://www.iptc.org/std/catalog/IPTC-G2-standards_27.xml" />
+	<catalogRef href="http://www.example.com/events/event-catalog.xml" />
+In the mandatory <itemMeta> wrapper the IPTC “Nature of Concept Item” NewsCodes expresses the type of Concept Item. (This is complementary to the “Nature of News Item” NewsCodes used with a News Item.) There are currently two values: “concept” and “scheme”. (Scheme is used for Knowledge Items.)
+	<itemMeta>
+		<itemClass qcode="cinat:concept" />
+		<provider qcode="nprov:IPTC" />
+		<versionCreated>2016-10-18T13:05:00Z 
+		</versionCreated>
+		<pubStatus qcode="stat:usable" />
+	</itemMeta>
+The Content Metadata for a Concept Item may contain only Administrative Metadata:
+	<contentMeta>
+	<urgency>5</urgency>
+	<contentCreated>2016-01-16T12:15:00Z</contentCreated>
+	<contentModified>2016-06-16T13:35:00Z</contentModified>
+	</contentMeta>
+ ===========================================================
+
