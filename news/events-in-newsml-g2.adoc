@@ -66,7 +66,8 @@ Figure 14: Persistent Event as a Concept and (right) transient Events in a News 
 In a news context, events are newsworthy happenings that may result in the creation of journalistic content. Since news involves people, organisations and places, NewsML-G2 has a flexible set of properties that can convey details of these concepts. There is also a fully-featured date-time structure to express event occurrences, which conforms to the iCalendar specification. 
 ### Complete Listing for an example Event
 The following example shows a news event expressed as a Concept and conveyed within a Concept Item.
-LISTING 1 Event sent as a Concept Item
+
+.LISTING 1 Event sent as a Concept Item
 All Scheme Aliases used in listing below indicate IPTC NewsCodes vocabularies, except for the following alias values: event, frel, ventyp.
 
 [source]
@@ -122,7 +123,6 @@ All Scheme Aliases used in listing below indicate IPTC NewsCodes vocabularies, e
 		</eventDetails>
 	</concept>
 </conceptItem>
-
 The top level element of the Concept Item is <conceptItem>. The document must be uniquely identified using a GUID. By this means, event information re-sent using the same GUID and an incremented version number, allows the receiver to manage, update or replace the conveyed concept (event) information.
 [NOTE]
 @guid and @version uniquely identify the Concept Item, for the purpose of managing and updating the event information. Items that reference the event itself MUST use the Concept ID. This is because the Concept ID uniquely references a persistent Web resource, whereas the GUID only identifies a document that may or may not persist. 
@@ -140,7 +140,10 @@ To enable concepts to be identified by a Concept ID QCode, a reference to the pr
 	xml:lang="en">
 	<catalogRef href="http://www.iptc.org/std/catalog/IPTC-G2-standards_27.xml" />
 	<catalogRef href="http://www.example.com/events/event-catalog.xml" />
+  
 In the mandatory <itemMeta> wrapper the IPTC “Nature of Concept Item” NewsCodes expresses the type of Concept Item. (This is complementary to the “Nature of News Item” NewsCodes used with a News Item.) There are currently two values: “concept” and “scheme”. (Scheme is used for Knowledge Items.)
+
+[source]
 	<itemMeta>
 		<itemClass qcode="cinat:concept" />
 		<provider qcode="nprov:IPTC" />
