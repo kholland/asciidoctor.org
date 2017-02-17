@@ -11,16 +11,15 @@ The sharing of event-related information and planning of news coverage is a core
 News agencies need to keep their customers informed of upcoming events and planned coverage. News organisations publishing on paper and digital media need to plan and co-ordinate their operations in order to make optimum use of their available resources and ensure their target audiences will be properly served.
 
 Historically, this was a paper-based exercise, with news desks maintaining a Day Book, or Diary, and circulating information to colleagues and partners using written memoranda, sometimes referred to as the Schedule, or Budget. 
-
 Many organisations have moved, or are moving, to electronic scheduling applications. With software developers and vendors working independently on these applications, there is a risk that incompatibility will inhibit the exchange of information and reduce efficiency. 
 
 Consequently, there has been a drive among IPTC members to formalise a standard for exchanging this information in a machine-readable events format using XML, allowing it to be processed using standard tools and enabling compatibility with other XML-based applications and popular calendaring applications such as Microsoft Outlook.
-
 Originally a separate EventsML-G2 standard, the Events Calendar and Scheduling model is now merged with NewsML-G2 to create a single standard focussed on the needs of a professional news industry workflow5. There is the need to express the basic news agenda of “what, when, where and who” in a machine-readable form that can be processed by calendar and planning tools.
-
+ 
 The related NewsML-G2 Planning Item can be combined with Event information so that news organisations can plan their response to news events, such as job assignments, content planning and content fulfilment, sharing this if required with partners in a workflow. (See Editorial Planning – the Planning Item)
 
 NewsML-G2 Events may be used to send and receive all, or part of, the information about:
+
 - a specific news event.
 - a range of news events filtered according to some criteria – an event listing.
 - updates to news events.
